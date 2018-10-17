@@ -15,7 +15,7 @@ class ListView extends Component {
         <h4 className="List-Header">Your Notes:</h4>
         <div className="note">
           {this.props.notes.map(note => {
-            return <NoteCard key={note._id} note={note} />;
+            return <NoteCard key={note.NoteID} note={note} />;
           })}
         </div>
       </div>
