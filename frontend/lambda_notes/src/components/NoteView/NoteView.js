@@ -13,7 +13,7 @@ class NoteView extends Component {
   }
 
   matchedNote = this.props.notes.filter(note => {
-    return note._id === this.props.match.params.id;
+    return note.NoteID === this.props.match.params.id;
   })[0];
 
   componentDidMount() {
@@ -35,7 +35,7 @@ class NoteView extends Component {
             </Link>
             <DeleteNote
               className="links"
-              toDelete={this.state.note._id}
+              toDelete={this.state.note.NoteID}
               history={this.props.history}
             />
           </div>

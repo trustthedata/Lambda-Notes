@@ -14,7 +14,7 @@ class EditNote extends Component {
   }
 
   matchedNote = this.props.notes.filter(note => {
-    return note._id === this.props.match.params.id;
+    return note.NoteID === this.props.match.params.id;
   })[0];
 
   componentDidMount() {
@@ -28,8 +28,7 @@ class EditNote extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleUpdate = event => {
-    event.preventDefault();
+  handleUpdate = () => {
     const id = this.props.match.params.id;
     const editedNote = {
       title: this.state.title,

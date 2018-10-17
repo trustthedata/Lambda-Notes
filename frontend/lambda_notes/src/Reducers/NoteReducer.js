@@ -35,13 +35,23 @@ export const notesReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         updatingNote: true,
         success: false,
-        notes: action.payload
+        notes: state.notes.map(note => {
+          if (note.NoteID === action.id) {
+            return {
+              ...note,
+              title: action.payload.title,
+              content: action.payload.content
+            };
+          } else {
+            return note;
+          }
+        })
       });
     case DELETED_NOTE:
       return Object.assign({}, state, {
         deletingNote: true,
         success: false,
-        notes: action.payload
+        notes: state.notes.filter(note => note.NoteID !== action.id)
       });
     case SUCCESS:
       return Object.assign({}, state, {

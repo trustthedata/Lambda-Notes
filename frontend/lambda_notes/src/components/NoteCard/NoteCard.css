@@ -2,6 +2,7 @@
   margin: 1rem 1rem;
   width: 200px;
   min-height: 170px;
+  max-height: 170px;
   overflow: hidden;
 }
 
@@ -9,15 +10,61 @@
   border: 0.5px solid #979797;
 }
 
+/* mixin for multiline */
 .Card-Title {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   border-bottom: 1px solid #979797;
-  text-align: left;
+  text-align: center;
   font-weight: bold;
   color: black;
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2em;
+  max-height: 2.5em;
+  padding-right: .6em;
+}
+
+.Card-Title:before {
+  content: '...';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.Card-Title:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
 }
 
 .Card-Text {
   font-size: 1.3rem;
   color: black;
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2em;
+  max-height: 7.1em;
+  text-align: justify;
+  padding-right: 1em;
+}
+
+.Card-Text:before {
+  content: '...';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.Card-Text:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
 }

@@ -10,21 +10,17 @@ class DeleteNote extends Component {
     this.state = {
       modal: false
     };
-
-    this.toggle = this.toggle.bind(this);
-    this.handleDeleteNote = this.handleDeleteNote.bind(this);
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
-  }
+  };
 
-  handleDeleteNote(event) {
-    event.preventDefault();
+  handleDeleteNote = () => {
     this.props.deleteNote(this.props.toDelete);
-  }
+  };
 
   render() {
     return (
