@@ -22,6 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'hello world'
 
+# # Django Oauth Toolkit ID and Secret
+# CLIENT_ID = os.environ.get("CLIENT_ID")
+# CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -40,6 +44,7 @@ INSTALLED_APPS = [
     'notes', # add the notes app
     'rest_framework', # enable rest framework
     'corsheaders', # enable django-cors-headers
+    # 'oauth2_provider', # enable django-oauth-toolkit
 ]
 
 MIDDLEWARE = [
@@ -127,12 +132,23 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# OAUTH2_PROVIDER = {
+#     # this is the list of available scopes
+#     'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'}
+# }
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': [
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-        'rest_framework.permissions.AllowAny'
+        # 'rest_framework.permissions.AllowAny'
+        'rest_framework.permissions.IsAuthenticated',
     ]
 }
 
