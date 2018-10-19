@@ -1,4 +1,5 @@
 from rest_framework import viewsets, permissions
+from rest_framework.authtoken.models import Token
 from .models import PersonalNote
 from .serializers import PersonalNoteSerializer, UserSerializer, GroupSerializer
 from django.contrib.auth.models import User, Group
@@ -18,6 +19,21 @@ class PersonalNoteViewSet(viewsets.ModelViewSet):
             return PersonalNote.objects.filter(user=user)
 
 class UserViewSet(viewsets.ModelViewSet):
+    '''
+    Creates the user 
+    '''
+
+    def post(self, request, format='json'):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            if user:
+                token = Token.objects.create(user=user)
+                json = serializer.data
+                json['token'] = token.key
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAdminUser]

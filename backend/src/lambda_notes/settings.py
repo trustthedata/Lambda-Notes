@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework', # enable rest framework
     'corsheaders', # enable django-cors-headers
     # 'oauth2_provider', # enable django-oauth-toolkit
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -142,14 +143,15 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_AUTHENTICATION_CLASSES': (
         # 'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
-    'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-        # 'rest_framework.permissions.AllowAny'
-        'rest_framework.permissions.IsAuthenticated',
-    ]
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    #     # 'rest_framework.permissions.AllowAny'
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ]
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
