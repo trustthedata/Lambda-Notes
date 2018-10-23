@@ -1,9 +1,10 @@
-from rest_framework import viewsets, permissions
-from rest_framework.authtoken.models import Token
+from rest_framework import viewsets, permissions, status
 from .models import PersonalNote
-from .serializers import PersonalNoteSerializer, UserSerializer, GroupSerializer
+from .serializers import PersonalNoteSerializer, UserSerializer, UserSerializerWithToken, GroupSerializer
 from django.contrib.auth.models import User, Group
-# from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 class PersonalNoteViewSet(viewsets.ModelViewSet):
     queryset = PersonalNote.objects.none()
@@ -18,25 +19,27 @@ class PersonalNoteViewSet(viewsets.ModelViewSet):
         else:
             return PersonalNote.objects.filter(user=user)
 
-class UserViewSet(viewsets.ModelViewSet):
+@api_view(['GET'])
+def current_user(request):
+    """
+    Determine the current user by their token, and return their data
+    """
+    
+    serializer = UserSerializer(request.user)
+    return Response(serializer.data)
+
+class UserList(APIView):
     '''
     Creates the user 
     '''
+    permission_classes = [permissions.AllowAny]
 
-    def post(self, request, format='json'):
-        serializer = UserSerializer(data=request.data)
+    def post(self, request, format=None):
+        serializer = UserSerializerWithToken(data=request.data)
         if serializer.is_valid():
-            user = serializer.save()
-            if user:
-                token = Token.objects.create(user=user)
-                json = serializer.data
-                json['token'] = token.key
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAdminUser]
 
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
