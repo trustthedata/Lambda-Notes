@@ -7,7 +7,8 @@ class Register extends Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      email: ""
     };
   }
 
@@ -18,9 +19,10 @@ class Register extends Component {
   submitInputChange = event => {
     event.preventDefault();
     axios
-      .post(`${SERVER_URL}/users/register`, this.state)
+      .post(`http://localhost:8000/api/users/`, this.state)
       .then(response => {
         localStorage.setItem("jwt", response.data.token);
+        this.setState({ username: "", password: "", email: "" });
         this.props.history.push("/home");
       })
       .catch(err => err.message);
@@ -47,6 +49,16 @@ class Register extends Component {
             placeholder="password"
             name="password"
             type="password"
+          />
+        </div>
+        <div>
+          <label>Email</label>
+          <input
+            value={this.state.email}
+            onChange={this.handleInputChange}
+            placeholder="email"
+            name="email"
+            type="email"
           />
         </div>
         <div>

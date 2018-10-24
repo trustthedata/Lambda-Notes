@@ -1,10 +1,19 @@
 import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 import { SERVER_URL } from "../../Config/config";
 import axios from "axios";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Button,
+  Alert
+} from "reactstrap";
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       username: "",
       password: ""
@@ -12,15 +21,18 @@ class Login extends Component {
   }
 
   handleInputChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   };
 
   submitInputChange = event => {
     event.preventDefault();
     axios
-      .post(`${SERVER_URL}/users/login`, this.state)
+      .post(`http://localhost:8000/token-auth/`, this.state)
       .then(response => {
         localStorage.setItem("jwt", response.data.token);
+        this.setState({ username: "", password: "" });
         this.props.history.push("/home");
       })
       .catch(err => err.message);

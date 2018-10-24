@@ -3,13 +3,17 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { addNote } from "../../Actions/index";
 import "../CreateNote/CreateNoteView.css";
+import AuthService from "../../Auth/authservice";
+
+const Auth = new AuthService();
 
 class CreateNoteView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: "",
-      content: ""
+      content: "",
+      user: Auth.getProfile().user_id
     };
   }
 
