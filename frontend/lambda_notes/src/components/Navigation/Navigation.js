@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../Navigation/Navigation.css";
+import AuthService from "../../Auth/authservice";
+
+const Auth = new AuthService();
 
 class Navigation extends Component {
   render() {
@@ -13,6 +16,14 @@ class Navigation extends Component {
         <Link to="/create">
           <button className="NavButton">+ Create New Note</button>
         </Link>
+        {Auth.loggedIn() ? (
+          <div>
+            <p>{`Welcome back, ${Auth.getProfile().username}`}</p>
+            <p onClick={() => Auth.logout()}>Sign Out</p>
+          </div>
+        ) : (
+          <p>Login</p>
+        )}
       </div>
     );
   }
