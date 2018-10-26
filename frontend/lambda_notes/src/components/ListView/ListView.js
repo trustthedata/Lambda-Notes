@@ -11,11 +11,12 @@ class ListView extends Component {
   }
 
   searchNotes = query => {
+    // this.props.searchNotes(query);
     let filteredNotes = this.props.notes.filter(note => {
       return note.title.includes(query) || note.content.includes(query);
     });
     console.log(filteredNotes);
-    this.searchNotes(filteredNotes);
+    this.props.searchNotes(filteredNotes);
     // this.setState({ notes: filteredNotes });
   };
 
