@@ -1,0 +1,2 @@
+release: python manage.py migrate
+web: gunicorn lambda_notes.wsgi --log-file -
