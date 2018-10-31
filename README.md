@@ -4,7 +4,7 @@ Note taking app that allows people to create personal notes, search for a specif
 
 - Deployments:
   - Frontend:
-  - Backend: https://back-lambda-car-reviews.herokuapp.com
+  - Backend: https://djangonotes-api.herokuapp.com
 
 Tech:
 
@@ -17,7 +17,8 @@ Tech:
 
 # How to start a local instance:
 
-This app uses Django 2.1.2, Python 3.6, and React 16.3
+This app uses Django 2.1.2, Python 3.6, and React 16.3.
+
 This project is broken up into a backend and frontend. The backend contains the Django project which uses the Django Rest Framework to host a simple API. The frontend uses React and queries data from the API.
 
 - fork/clone repo
