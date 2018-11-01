@@ -1,6 +1,6 @@
 # Lambda Notes
 
-Note taking app that allows people to create personal notes, search for a specific note, and sort notes by assigned tag category.
+Note taking app that allows people to create personal notes, search for a specific note, and filter notes by assigned tag.
 
 - Deployments:
   - Frontend: https://lambda-notes-application.netlify.com
