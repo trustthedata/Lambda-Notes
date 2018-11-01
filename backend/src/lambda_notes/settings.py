@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import dj_database_url
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+DATABASES = {'default': dj_database_url.config(conn_max_age=600)}
 
 import os
 from datetime import timedelta
