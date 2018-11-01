@@ -20,7 +20,7 @@ export const fetchNote = () => {
       type: FETCHING_NOTES
     });
     axios
-      .get(`${SERVER_URL}`, config)
+      .get(`${SERVER_URL}/api/notes/`, config)
       .then(response => {
         dispatch({
           type: SUCCESS,
@@ -39,7 +39,7 @@ export const fetchNote = () => {
 export const addNote = note => {
   return function(dispatch) {
     axios
-      .post(`${SERVER_URL}`, note, config)
+      .post(`${SERVER_URL}/api/notes/`, note, config)
       .then(response => {
         dispatch({
           type: ADDED_NOTE,
@@ -58,7 +58,7 @@ export const addNote = note => {
 export const editNote = (id, note) => {
   return function(dispatch) {
     axios
-      .put(`${SERVER_URL}${id}/`, note, config)
+      .put(`${SERVER_URL}/api/notes/${id}/`, note, config)
       .then(response => {
         dispatch({
           type: UPDATED_NOTE,
@@ -78,9 +78,8 @@ export const editNote = (id, note) => {
 export const deleteNote = id => {
   return function(dispatch) {
     axios
-      .delete(`${SERVER_URL}${id}/`, config)
+      .delete(`${SERVER_URL}/api/notes/${id}/`, config)
       .then(response => {
-        console.log("deleteNote:", response);
         dispatch({
           type: DELETED_NOTE,
           id: id

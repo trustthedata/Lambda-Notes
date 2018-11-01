@@ -5,8 +5,7 @@ import Navigation from "./Navigation/Navigation";
 import NoteView from "./NoteView/NoteView";
 import EditNote from "./EditNote/EditNote";
 import CreateNoteView from "./CreateNote/CreateNoteView";
-import Register from "./Register/Register";
-import Login from "./Login/Login";
+import LoginRegister from "./LoginRegister/LoginRegister";
 import "./App.css";
 import AuthService from "../Auth/authservice";
 
@@ -28,8 +27,7 @@ class App extends Component {
         <Navigation />
         <div className="mainViews">
           <Switch>
-            <Route exact path="/" component={Login} />
-            <Route exact path="/register" component={Register} />
+            <Route exact path="/" component={LoginRegister} />
             <PrivateRoute exact path="/home" component={ListView} />
             <PrivateRoute exact path="/note/:id" component={NoteView} />
             <PrivateRoute exact path="/create" component={CreateNoteView} />
