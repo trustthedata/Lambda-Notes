@@ -33,7 +33,7 @@ This project is broken up into a backend and frontend. The backend contains the 
 - Django server will be running at http://localhost:8000/
 
 3.  to start the front end:
-    - `cd frontend`
+    - `cd frontend/lambda_notes`
     - `yarn install`
     - `yarn start`
 
