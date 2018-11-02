@@ -3,13 +3,17 @@ import { connect } from "react-redux";
 import { editNote } from "../../Actions/index";
 import { Link } from "react-router-dom";
 import "../CreateNote/CreateNoteView.css";
+import AuthService from "../../Auth/authservice";
+
+const Auth = new AuthService();
 
 class EditNote extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: "",
-      content: ""
+      content: "",
+      user: Auth.getProfile().user_id
     };
   }
 
@@ -30,10 +34,7 @@ class EditNote extends Component {
 
   handleUpdate = () => {
     const id = this.props.match.params.id;
-    const editedNote = {
-      title: this.state.title,
-      content: this.state.content
-    };
+    const editedNote = this.state;
     this.props.editNote(id, editedNote);
   };
 

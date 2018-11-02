@@ -4,8 +4,15 @@ import { connect } from "react-redux";
 import { addNote } from "../../Actions/index";
 import "../CreateNote/CreateNoteView.css";
 import AuthService from "../../Auth/authservice";
+import { WithContext as ReactTags } from "react-tag-input";
 
 const Auth = new AuthService();
+const KeyCodes = {
+  comma: 188,
+  enter: 13
+};
+
+const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
 class CreateNoteView extends Component {
   constructor(props) {
@@ -13,7 +20,8 @@ class CreateNoteView extends Component {
     this.state = {
       title: "",
       content: "",
-      user: Auth.getProfile().user_id
+      user: Auth.getProfile().user_id,
+      tags: []
     };
   }
 
@@ -22,12 +30,30 @@ class CreateNoteView extends Component {
   };
 
   submitInputChange = () => {
-    let note = this.state;
+    const { title, content, user, tags } = this.state;
+    let note = {
+      title: title,
+      content: content,
+      user: user,
+      tags: tags.map(tag => tag.text)
+    };
     this.props.addNote(note);
-    this.setState({ title: "", content: "" });
+    this.setState({ title: "", content: "", tags: [] });
+  };
+
+  handleDelete = i => {
+    const { tags } = this.state;
+    this.setState({
+      tags: tags.filter((tag, index) => index !== i)
+    });
+  };
+
+  handleAddition = tag => {
+    this.setState(state => ({ tags: [...state.tags, tag] }));
   };
 
   render() {
+    const { tags } = this.state;
     return (
       <div className="NoteView">
         <p className="CreateNote-Header">Create New Note:</p>
@@ -51,6 +77,12 @@ class CreateNoteView extends Component {
               onChange={this.handleInputChange}
             />
           </p>
+          <ReactTags
+            tags={tags}
+            handleDelete={this.handleDelete}
+            handleAddition={this.handleAddition}
+            delimiters={delimiters}
+          />
         </form>
         <Link to="/home">
           <button onClick={this.submitInputChange} className="CreateViewButton">

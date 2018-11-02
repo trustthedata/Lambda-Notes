@@ -7,12 +7,6 @@ export const DELETED_NOTE = "DELETED_NOTE";
 export const SUCCESS = "SUCCESS";
 export const ERROR = "ERROR";
 
-const options = {
-  headers: {
-    Authorization: `JWT ${localStorage.getItem("jwt")}`
-  }
-};
-
 export const fetchNote = () => {
   return function(dispatch) {
     dispatch({
@@ -44,8 +38,14 @@ export const fetchNote = () => {
 
 export const addNote = note => {
   return function(dispatch) {
+    const config = {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem("jwt")}`
+      }
+    };
+
     axios
-      .post(`${SERVER_URL}/api/notes/`, note, options)
+      .post(`${SERVER_URL}/api/notes/`, note, config)
       .then(response => {
         dispatch({
           type: ADDED_NOTE,
@@ -63,8 +63,14 @@ export const addNote = note => {
 
 export const editNote = (id, note) => {
   return function(dispatch) {
+    const config = {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem("jwt")}`
+      }
+    };
+
     axios
-      .put(`${SERVER_URL}/api/notes/${id}/`, note, options)
+      .put(`${SERVER_URL}/api/notes/${id}/`, note, config)
       .then(response => {
         dispatch({
           type: UPDATED_NOTE,
@@ -83,8 +89,14 @@ export const editNote = (id, note) => {
 
 export const deleteNote = id => {
   return function(dispatch) {
+    const config = {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem("jwt")}`
+      }
+    };
+
     axios
-      .delete(`${SERVER_URL}/api/notes/${id}/`, options)
+      .delete(`${SERVER_URL}/api/notes/${id}/`, config)
       .then(response => {
         dispatch({
           type: DELETED_NOTE,
