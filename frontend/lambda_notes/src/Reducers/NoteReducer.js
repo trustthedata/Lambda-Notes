@@ -3,7 +3,6 @@ import {
   ADDED_NOTE,
   UPDATED_NOTE,
   DELETED_NOTE,
-  SEARCHED_NOTES,
   SUCCESS,
   ERROR
 } from "../Actions/index";
@@ -54,15 +53,6 @@ export const notesReducer = (state = initialState, action) => {
         success: false,
         notes: state.notes.filter(note => note.NoteID !== action.id)
       });
-    // case SEARCHED_NOTES:
-    //   return Object.assign({}, state, {
-    //     notes: state.notes.filter(note => {
-    //       return (
-    //         note.title.includes(action.payload) ||
-    //         note.content.includes(action.payload)
-    //       );
-    //     })
-    //   });
     case SUCCESS:
       return Object.assign({}, state, {
         fetchingNotes: false,
