@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'notes', # add the notes app
     'rest_framework', # enable rest framework
     'corsheaders', # enable django-cors-headers
+    'taggit', # enable django-taggit
+    'taggit_serializer', # enable django-taggit-serializer
 ]
 
 MIDDLEWARE = [
@@ -152,4 +154,7 @@ JWT_AUTH = {
      'JWT_ALLOW_REFRESH': True,
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST =(
+    'https://lambda-notes-application.netlify.com'
+)
