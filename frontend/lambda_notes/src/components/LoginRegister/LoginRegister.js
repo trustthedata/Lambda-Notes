@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { SERVER_URL } from "../../Config/config";
 import axios from "axios";
 import {
   Card,
@@ -11,6 +10,8 @@ import {
   Alert
 } from "reactstrap";
 import "./LoginRegister.css";
+
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 class LoginRegister extends Component {
   constructor(props) {

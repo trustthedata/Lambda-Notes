@@ -154,7 +154,7 @@ JWT_AUTH = {
      'JWT_ALLOW_REFRESH': True,
 }
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST =(
-    'https://lambda-notes-application.netlify.com'
-)
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST =(
+#     'https://lambda-notes-application.netlify.com'
+# )

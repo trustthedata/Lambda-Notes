@@ -2,9 +2,8 @@
 
 Note taking app that allows people to create personal notes, search for a specific note, and filter notes by assigned tag.
 
-- Deployments:
-  - Frontend: https://lambda-notes-application.netlify.com
-  - Backend: https://djangonotes-api.herokuapp.com
+- Deployed Site:
+  - https://lambda-notes-application.netlify.com
 
 Tech:
 

@@ -1,11 +1,12 @@
 import axios from "axios";
-import { SERVER_URL } from "../Config/config";
 export const FETCHING_NOTES = "FETCHING_NOTES";
 export const ADDED_NOTE = "ADDED_NOTE";
 export const UPDATED_NOTE = "UPDATED_NOTE";
 export const DELETED_NOTE = "DELETED_NOTE";
 export const SUCCESS = "SUCCESS";
 export const ERROR = "ERROR";
+
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 export const fetchNote = () => {
   return function(dispatch) {
