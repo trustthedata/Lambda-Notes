@@ -3,10 +3,10 @@ from rest_framework.validators import UniqueValidator
 from rest_framework_jwt.settings import api_settings
 from notes.models import PersonalNote
 from django.contrib.auth.models import User, Group
-from taggit_serializer.serializers import (TagListSerializerField, TaggitSerializer)
+# from taggit_serializer.serializers import (TagListSerializerField, TaggitSerializer)
 
-class PersonalNoteSerializer(TaggitSerializer, serializers.ModelSerializer):
-  tags = TagListSerializerField()
+class PersonalNoteSerializer(serializers.ModelSerializer):
+#   tags = TagListSerializerField()
 
   def create(self, validated_data):
     #   user = self.context['request'].user
