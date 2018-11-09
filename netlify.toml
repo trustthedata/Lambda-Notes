@@ -1,0 +1,5 @@
+[build]
+base = "frontend/lambda_notes"
+publish = "frontend/lambda_notes/build/"
+command = "yarn build"
+
