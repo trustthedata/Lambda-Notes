@@ -5,14 +5,13 @@
   font-family: 'Raleway', sans-serif;
   color: #4A4A4A;
   height: 100vh;
-  min-width: 450px;
+  max-width: 1920px;
+  width: 100%;
 }
 
 .mainViews {
   display: flex;
   flex-direction: column;
-  max-width: 681px;
-  min-width: 260px;
   width: 100%;
   overflow: auto;
   background-color: #F3F3F3;
