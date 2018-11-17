@@ -83,12 +83,15 @@ class CreateNoteView extends Component {
             handleAddition={this.handleAddition}
             delimiters={delimiters}
           />
+          <Link to="/home">
+            <button
+              onClick={this.submitInputChange}
+              className="CreateViewButton"
+            >
+              Save
+            </button>
+          </Link>
         </form>
-        <Link to="/home">
-          <button onClick={this.submitInputChange} className="CreateViewButton">
-            Save
-          </button>
-        </Link>
       </div>
     );
   }

@@ -62,12 +62,12 @@ class EditNote extends Component {
               onChange={this.handleChange}
             />
           </p>
+          <Link to="/home">
+            <button className="CreateViewButton" onClick={this.handleUpdate}>
+              Update
+            </button>
+          </Link>
         </form>
-        <Link to="/home">
-          <button className="CreateViewButton" onClick={this.handleUpdate}>
-            Update
-          </button>
-        </Link>
       </div>
     );
   }
