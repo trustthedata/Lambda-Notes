@@ -17,6 +17,10 @@
   margin-bottom: 15px;
 }
 
+.noteView-Header-links {
+  display: flex;
+}
+
 p {
   font-size: 1.4rem;
   color: black;
@@ -29,4 +33,5 @@ p {
   text-decoration: underline;
   color: black;
   font-size: 1.3rem;
+  cursor: pointer;
 }

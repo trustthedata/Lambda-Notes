@@ -25,19 +25,23 @@ class NoteView extends Component {
       <div className="noteView-Container">
         <div className="noteView-Header">
           <h4>{this.state.note.title}</h4>
-          <div>
-            <Link
-              to={`/edit/${this.props.match.params.id}`}
-              className="links"
-              style={{ color: "black" }}
-            >
-              edit
-            </Link>
-            <DeleteNote
-              className="links"
-              toDelete={this.state.note.NoteID}
-              history={this.props.history}
-            />
+          <div className="noteView-Header-links">
+            <p>
+              <Link
+                to={`/edit/${this.props.match.params.id}`}
+                className="links"
+                style={{ color: "black" }}
+              >
+                edit
+              </Link>
+            </p>
+            <p>
+              <DeleteNote
+                className="links"
+                toDelete={this.state.note.NoteID}
+                history={this.props.history}
+              />
+            </p>
           </div>
         </div>
         <div className="noteView-Content">

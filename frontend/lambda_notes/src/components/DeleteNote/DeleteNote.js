@@ -26,23 +26,11 @@ class DeleteNote extends Component {
     return (
       <div>
         <div>
-          <span
-            onClick={this.toggle}
-            className="atag"
-            style={{
-              textDecoration: "underline",
-              color: "black",
-              fontSize: "1.3rem"
-            }}
-          >
+          <span onClick={this.toggle} className={this.props.className}>
             delete
           </span>
         </div>
-        <Modal
-          isOpen={this.state.modal}
-          toggle={this.toggle}
-          className={this.props.className}
-        >
+        <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalBody className="modal-body">
             <p>Are you sure you want to delete this?</p>
             <p>
