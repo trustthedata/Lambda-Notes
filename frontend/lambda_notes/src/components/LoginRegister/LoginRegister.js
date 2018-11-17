@@ -10,6 +10,9 @@ import {
   Alert
 } from "reactstrap";
 import "./LoginRegister.css";
+import AuthService from "../../Auth/authservice";
+
+const Auth = new AuthService();
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -237,7 +240,11 @@ class LoginRegister extends Component {
   };
 
   render() {
-    return <div>{this.handleRenderFormType()}</div>;
+    return Auth.loggedIn() === true ? (
+      <Redirect to="/home" />
+    ) : (
+      <div>{this.handleRenderFormType()}</div>
+    );
   }
 }
 
