@@ -22,10 +22,11 @@ class ListView extends Component {
   };
 
   render() {
+    const { searchTerm } = this.state;
     let filteredNotes = this.props.notes.filter(note => {
       return (
-        note.title.includes(this.state.searchTerm) ||
-        note.content.includes(this.state.searchTerm)
+        note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        note.content.toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
 
