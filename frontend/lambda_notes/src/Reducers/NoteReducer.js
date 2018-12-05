@@ -4,10 +4,11 @@ import {
   UPDATED_NOTE,
   DELETED_NOTE,
   SUCCESS,
-  ERROR
+  ERROR,
+  CHANGE_SEARCH_FIELD
 } from "../Actions/index";
 
-const initialState = {
+const initialStateNotes = {
   notes: [],
   fetchingNotes: false,
   addingNote: false,
@@ -17,7 +18,7 @@ const initialState = {
   error: null
 };
 
-export const notesReducer = (state = initialState, action) => {
+export const notesReducer = (state = initialStateNotes, action) => {
   switch (action.type) {
     case FETCHING_NOTES:
       return Object.assign({}, state, {
@@ -72,6 +73,19 @@ export const notesReducer = (state = initialState, action) => {
         success: false,
         error: action.payload
       });
+    default:
+      return state;
+  }
+};
+
+const initialStateSearch = {
+  searchTerm: ""
+};
+
+export const searchNotes = (state = initialStateSearch, action) => {
+  switch (action.type) {
+    case CHANGE_SEARCH_FIELD:
+      return Object.assign({}, state, { searchTerm: action.payload });
     default:
       return state;
   }
