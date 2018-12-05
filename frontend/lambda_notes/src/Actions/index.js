@@ -5,6 +5,7 @@ export const UPDATED_NOTE = "UPDATED_NOTE";
 export const DELETED_NOTE = "DELETED_NOTE";
 export const SUCCESS = "SUCCESS";
 export const ERROR = "ERROR";
+export const CHANGE_SEARCH_FIELD = "CHANGE_SEARCH_FIELD"
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -112,3 +113,8 @@ export const deleteNote = id => {
       });
   };
 };
+
+export const setSearchField = text => ({
+  type: CHANGE_SEARCH_FIELD,
+  payload: text
+})
