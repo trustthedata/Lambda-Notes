@@ -2,28 +2,34 @@ import React, { Component } from "react";
 import NoteCard from "../NoteCard/NoteCard";
 import Search from "../Search/Search";
 import { connect } from "react-redux";
-import { fetchNote } from "../../Actions/index";
+import { fetchNote, setSearchField } from "../../Actions/index";
 import "../ListView/ListView.css";
 
-class ListView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchTerm: ""
-    };
-  }
+const mapStateToProps = state => {
+  return {
+    notes: state.notes.notes,
+    fetching: state.notes.fetchingNotes,
+    success: state.notes.success,
+    error: state.notes.error,
+    searchTerm: state.search.searchTerm
+  };
+};
 
+const mapDispatchToProps = dispatch => {
+  return {
+    updateSearch: event => dispatch(setSearchField(event.target.value)),
+    fetchNote: () => dispatch(fetchNote())
+  };
+};
+
+class ListView extends Component {
   componentDidMount() {
     this.props.fetchNote();
   }
 
-  updateSearch = event => {
-    this.setState({ searchTerm: event.target.value });
-  };
-
   render() {
-    const { searchTerm } = this.state;
-    let filteredNotes = this.props.notes.filter(note => {
+    const { notes, searchTerm, updateSearch } = this.props;
+    let filteredNotes = notes.filter(note => {
       return (
         note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         note.content.toLowerCase().includes(searchTerm.toLowerCase())
@@ -32,10 +38,7 @@ class ListView extends Component {
 
     return (
       <div className="ListView">
-        <Search
-          query={this.state.searchTerm}
-          updateSearch={this.updateSearch}
-        />
+        <Search query={searchTerm} updateSearch={updateSearch} />
         <h4 className="List-Header">Your Notes:</h4>
         <div className="note">
           {filteredNotes.map(note => {
@@ -47,16 +50,7 @@ class ListView extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    notes: state.notes.notes,
-    fetching: state.fetchingNotes,
-    success: state.success,
-    error: state.error
-  };
-};
-
 export default connect(
   mapStateToProps,
-  { fetchNote }
+  mapDispatchToProps
 )(ListView);
