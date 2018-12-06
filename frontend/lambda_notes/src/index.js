@@ -9,6 +9,7 @@ import App from "./components/App.js";
 import rootReducer from "./Reducers/index";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import registerServiceWorker from './registerServiceWorker';
 
 const middlewares = [thunk];
 
@@ -25,3 +26,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
+
+registerServiceWorker();

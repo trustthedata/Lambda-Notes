@@ -136,6 +136,7 @@ class LoginRegister extends Component {
           <CardBody>
             <form className="login-form">
               <input
+                aria-label="Enter username"
                 type="text"
                 name="username"
                 placeholder="Enter your username..."
@@ -144,6 +145,7 @@ class LoginRegister extends Component {
                 onChange={this.handleUpdateText("login")}
               />
               <input
+                aria-label="Enter Password"
                 type="password"
                 name="password"
                 placeholder="Enter your password..."
@@ -185,6 +187,7 @@ class LoginRegister extends Component {
           <CardBody>
             <form className="login-form">
               <input
+                aria-label="Enter username"
                 type="text"
                 name="username"
                 placeholder="Enter your username..."
@@ -193,6 +196,7 @@ class LoginRegister extends Component {
                 onChange={this.handleUpdateText("register")}
               />
               <input
+                aria-label="Enter email"
                 type="text"
                 name="email"
                 placeholder="Enter your email..."
@@ -201,6 +205,7 @@ class LoginRegister extends Component {
                 onChange={this.handleUpdateText("register")}
               />
               <input
+                aria-label="Enter password"
                 type="password"
                 name="password"
                 placeholder="Enter your password..."
