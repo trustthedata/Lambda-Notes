@@ -24,9 +24,10 @@ This project is broken up into a backend and frontend. The backend contains the 
 
 1. navigate into root directory
 2. to start the backend server:
-   - `cd backend`
+   - `cd backend/src`
    - `Create and activate a virtual environment`
    - `Run pip install -r requirements.txt`
+   - `In /lambda_notes/settings.py change line 157 to CORS_ORIGIN_ALLOW_ALL = True`
    - `python manage.py runserver`
 
 - Django server will be running at http://localhost:8000/
