@@ -15,7 +15,7 @@ djangorestframework==3.9.1
 djangorestframework-jwt==1.11.0
 gunicorn==19.9.0
 idna==2.7
-Jinja2==2.10
+Jinja2==2.11.3
 MarkupSafe==1.0
 numpy==1.15.0
 oauthlib==2.1.0
