@@ -24,7 +24,7 @@ pipenv==2018.7.1
 psycopg2==2.7.5
 psycopg2-binary==2.7.5
 pygame==1.9.3
-PyJWT==1.6.4
+PyJWT==2.4.0
 pyparsing==2.2.0
 python-dateutil==2.7.3
 python-decouple==3.1
