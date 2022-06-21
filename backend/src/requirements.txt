@@ -17,7 +17,7 @@ gunicorn==19.9.0
 idna==2.7
 Jinja2==2.10
 MarkupSafe==1.0
-numpy==1.15.0
+numpy==1.22.0
 oauthlib==2.1.0
 packaging==17.1
 pipenv==2018.7.1
